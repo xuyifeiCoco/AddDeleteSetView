@@ -1,0 +1,33 @@
+:global{
+  .example-appear {
+    opacity: 0.01;
+    margin-left: 100px;
+  }
+  
+  .example-appear.example-appear-active {
+    opacity: 1;
+    margin-left: 0;
+    transition: all 10s ease-in;
+  }
+
+
+  .example-enter {
+    opacity: 0.01;
+  }
+  
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: all 1000ms ease-in;
+  }
+  
+  .example-leave {
+    opacity: 1;
+    margin-left: 0;
+  }
+  
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    margin-left: 100px;
+    transition: all 3000ms ease-in;
+  }
+}
