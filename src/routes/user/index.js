@@ -103,6 +103,7 @@ const User = ({
       ...query,
     },
     onFilterChange (value) {
+      console.log(value)
       handleRefresh({
         ...value,
         page: 1,

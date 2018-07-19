@@ -37,9 +37,15 @@ const Filter = ({
   const handleFields = (fields) => {
     const { createTime } = fields
     if (createTime.length) {
-      fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')]
+      // fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')
+      fields.startTime = new Date(createTime[0]).getTime()
+      fields.endTime = new Date(createTime[1]).getTime()
+    }else{
+      fields.startTime = ''
+      fields.endTime = ''
     }
     return fields
+    // return time
   }
 
   const handleSubmit = () => {
@@ -84,7 +90,8 @@ const Filter = ({
       <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }}>
         {getFieldDecorator('name', { initialValue: name })(<Search placeholder="Search Name" onSearch={handleSubmit} />)}
       </Col>
-      <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }} id="addressCascader">
+      {/**
+      *  <Col {...ColProps} xl={{ span: 4 }} md={{ span: 8 }} id="addressCascader">
         {getFieldDecorator('address', { initialValue: address })(<Cascader
           style={{ width: '100%' }}
           options={city}
@@ -93,6 +100,7 @@ const Filter = ({
           getPopupContainer={() => document.getElementById('addressCascader')}
         />)}
       </Col>
+      */}
       <Col {...ColProps} xl={{ span: 6 }} md={{ span: 8 }} sm={{ span: 12 }} id="createTimeRangePicker">
         <FilterItem label="Createtime">
           {getFieldDecorator('createTime', { initialValue: initialCreateTime })(<RangePicker

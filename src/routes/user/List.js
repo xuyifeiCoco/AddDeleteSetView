@@ -29,49 +29,50 @@ const List = ({
   }
 
   const columns = [
+    // {
+    //   title: 'Avatar',
+    //   dataIndex: 'avatar',
+    //   key: 'avatar',
+    //   width: 64,
+    //   className: styles.avatar,
+    //   render: text => <img alt="avatar" width={24} src={text} />,
+    // },
     {
-      title: 'Avatar',
-      dataIndex: 'avatar',
-      key: 'avatar',
-      width: 64,
-      className: styles.avatar,
-      render: text => <img alt="avatar" width={24} src={text} />,
-    }, {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
       render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
     }, {
       title: 'NickName',
-      dataIndex: 'nickName',
-      key: 'nickName',
+      dataIndex: 'NickName',
+      key: 'NickName',
     }, {
       title: 'Age',
-      dataIndex: 'age',
-      key: 'age',
+      dataIndex: 'Age',
+      key: 'Age',
     }, {
       title: 'Gender',
-      dataIndex: 'isMale',
-      key: 'isMale',
-      render: text => (<span>{text
-        ? 'Male'
-        : 'Female'}</span>),
+      dataIndex: 'Gender',
+      key: 'Gender',
     }, {
       title: 'Phone',
-      dataIndex: 'phone',
-      key: 'phone',
+      dataIndex: 'Phone',
+      key: 'Phone',
     }, {
       title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
+      dataIndex: 'Email',
+      key: 'Email',
     }, {
       title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      dataIndex: 'Address',
+      key: 'Address',
     }, {
       title: 'CreateTime',
-      dataIndex: 'createTime',
-      key: 'createTime',
+      dataIndex: 'creat_time',
+      key: 'creat_time',
+      render: (text, record) => {
+        return <span>{new Date(text).format('yyyy-MM-dd')}</span>
+      }
     }, {
       title: 'Operation',
       key: 'operation',
@@ -98,7 +99,7 @@ const List = ({
       scroll={{ x: 1250 }}
       columns={columns}
       simple
-      rowKey={record => record.id}
+      rowKey={record => record._id}
       components={{
         body: { wrapper: isMotion ? AnimateBody : CommonBody },
       }}
