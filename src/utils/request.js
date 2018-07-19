@@ -7,7 +7,8 @@ import pathToRegexp from 'path-to-regexp'
 import { message } from 'antd'
 import { YQL, CORS } from './config'
 import Promise from 'es6-promise'
-Promise.polyfill();
+
+Promise.polyfill()
 const fetch = (options) => {
   let {
     method = 'get',
@@ -64,7 +65,9 @@ const fetch = (options) => {
         data: cloneData,
       })
     case 'post':
-      return axios.post(url, cloneData)
+      return axios.post(url, cloneData, 'headers':{
+        // 'Content-Type':'application/json'
+      })
     case 'put':
       return axios.put(url, cloneData)
     case 'patch':

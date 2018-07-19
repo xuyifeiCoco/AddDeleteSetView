@@ -2,11 +2,13 @@
 import modelExtend from 'dva-model-extend'
 import queryString from 'query-string'
 import { config } from 'utils'
-import { create, remove, update } from 'services/user'
+import { create } from 'services/user'
 import * as usersService from 'services/users'
 import { pageModel } from './common'
 
-const { query } = usersService
+const {
+ query, insert , update, remove 
+} = usersService
 const { prefix } = config
 
 export default modelExtend(pageModel, {
@@ -54,7 +56,8 @@ export default modelExtend(pageModel, {
     },
 
     * delete ({ payload }, { call, put, select }) {
-      const data = yield call(remove, { id: payload })
+      // console.log(payload)
+      const data = yield call(remove, { ArrayId: [payload] })
       const { selectedRowKeys } = yield select(_ => _.user)
       if (data.success) {
         yield put({ type: 'updateState', payload: { selectedRowKeys: selectedRowKeys.filter(_ => _ !== payload) } })
@@ -64,7 +67,7 @@ export default modelExtend(pageModel, {
     },
 
     * multiDelete ({ payload }, { call, put }) {
-      const data = yield call(usersService.remove, payload)
+      const data = yield call(remove, { ArrayId: payload.ids })
       if (data.success) {
         yield put({ type: 'updateState', payload: { selectedRowKeys: [] } })
       } else {
@@ -73,7 +76,7 @@ export default modelExtend(pageModel, {
     },
 
     * create ({ payload }, { call, put }) {
-      const data = yield call(create, payload)
+      const data = yield call(insert, payload)
       if (data.success) {
         yield put({ type: 'hideModal' })
       } else {
@@ -82,8 +85,8 @@ export default modelExtend(pageModel, {
     },
 
     * update ({ payload }, { select, call, put }) {
-      const id = yield select(({ user }) => user.currentItem.id)
-      const newUser = { ...payload, id }
+      const userId = yield select(({ user }) => user.currentItem._id)
+      const newUser = { ...payload, userId }
       const data = yield call(update, newUser)
       if (data.success) {
         yield put({ type: 'hideModal' })

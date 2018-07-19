@@ -33,7 +33,8 @@ const modal = ({
         ...getFieldsValue(),
         key: item.key,
       }
-      data.address = data.address.join(' ')
+      // console.log(data)
+      data.Address = data.Address.join(' ')
       onOk(data)
     })
   }
@@ -57,8 +58,8 @@ const modal = ({
           })(<Input />)}
         </FormItem>
         <FormItem label="NickName" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('nickName', {
-            initialValue: item.nickName,
+          {getFieldDecorator('NickName', {
+            initialValue: item.NickName,
             rules: [
               {
                 required: true,
@@ -67,8 +68,8 @@ const modal = ({
           })(<Input />)}
         </FormItem>
         <FormItem label="Gender" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('isMale', {
-            initialValue: item.isMale,
+          {getFieldDecorator('Gender', {
+            initialValue: item.Gender,
             rules: [
               {
                 required: true,
@@ -81,8 +82,8 @@ const modal = ({
           </Radio.Group>)}
         </FormItem>
         <FormItem label="Age" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('age', {
-            initialValue: item.age,
+          {getFieldDecorator('Age', {
+            initialValue: item.Age,
             rules: [
               {
                 required: true,
@@ -92,8 +93,8 @@ const modal = ({
           })(<InputNumber min={18} max={100} />)}
         </FormItem>
         <FormItem label="Phone" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('phone', {
-            initialValue: item.phone,
+          {getFieldDecorator('Phone', {
+            initialValue: item.Phone,
             rules: [
               {
                 required: true,
@@ -104,8 +105,8 @@ const modal = ({
           })(<Input />)}
         </FormItem>
         <FormItem label="E-mail" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: item.email,
+          {getFieldDecorator('Email', {
+            initialValue: item.Email,
             rules: [
               {
                 required: true,
@@ -116,8 +117,8 @@ const modal = ({
           })(<Input />)}
         </FormItem>
         <FormItem label="Address" hasFeedback {...formItemLayout}>
-          {getFieldDecorator('address', {
-            initialValue: item.address && item.address.split(' '),
+          {getFieldDecorator('Address', {
+            initialValue: item.Address && item.Address.split(' '),
             rules: [
               {
                 required: true,

@@ -22,7 +22,7 @@ const List = ({
       confirm({
         title: 'Are you sure delete this record?',
         onOk () {
-          onDeleteItem(record.id)
+          onDeleteItem(record._id)
         },
       })
     }
@@ -41,7 +41,7 @@ const List = ({
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
-      render: (text, record) => <Link to={`user/${record.id}`}>{text}</Link>,
+      render: (text, record) => <Link to={`user/${record._id}`}>{text}</Link>,
     }, {
       title: 'NickName',
       dataIndex: 'NickName',
@@ -54,6 +54,7 @@ const List = ({
       title: 'Gender',
       dataIndex: 'Gender',
       key: 'Gender',
+      render: (text, record) => <span>{text?'男':'女'}</span>,
     }, {
       title: 'Phone',
       dataIndex: 'Phone',

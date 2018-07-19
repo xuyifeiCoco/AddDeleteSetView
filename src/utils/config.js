@@ -15,7 +15,12 @@ module.exports = {
     userLogin: `${APIV1}/user/login`,
     userLogout: `${APIV1}/user/logout`,
     userInfo: `${APIV1}/userInfo`,
+
     users: `${api}/list`, // 获取用户列表
+    insertUsers: `${api}/insert`, // 插入用户
+    updateUsers: `${api}/update`, // 插入用户
+    removeUsers: `${api}/delete`, // 插入用户
+
     user: `${APIV1}/user/:id`,
     dashboard: `${APIV1}/dashboard`,
     weather: `${APIV1}/weather`,
