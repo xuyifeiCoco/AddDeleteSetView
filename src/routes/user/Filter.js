@@ -40,7 +40,7 @@ const Filter = ({
       // fields.createTime = [createTime[0].format('YYYY-MM-DD'), createTime[1].format('YYYY-MM-DD')
       fields.startTime = new Date(createTime[0]).getTime()
       fields.endTime = new Date(createTime[1]).getTime()
-    }else{
+    } else{
       fields.startTime = ''
       fields.endTime = ''
     }
@@ -51,6 +51,9 @@ const Filter = ({
   const handleSubmit = () => {
     let fields = getFieldsValue()
     fields = handleFields(fields)
+    if (fields.hasOwnProperty('createTime')) {
+      delete fields.createTime
+    }
     onFilterChange(fields)
   }
 

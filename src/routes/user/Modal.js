@@ -31,7 +31,8 @@ const modal = ({
       }
       const data = {
         ...getFieldsValue(),
-        key: item.key,
+        // key: item.key,  //mongodb
+        id: item.id, // mysql
       }
       // console.log(data)
       data.Address = data.Address.join(' ')
@@ -43,7 +44,6 @@ const modal = ({
     ...modalProps,
     onOk: handleOk,
   }
-
   return (
     <Modal {...modalOpts}>
       <Form layout="horizontal">
@@ -69,7 +69,7 @@ const modal = ({
         </FormItem>
         <FormItem label="Gender" hasFeedback {...formItemLayout}>
           {getFieldDecorator('Gender', {
-            initialValue: item.Gender,
+            initialValue: item.Gender !== 0, // mongodb item.Gender  mysql  item.Gender !== 0
             rules: [
               {
                 required: true,

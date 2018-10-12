@@ -22,7 +22,7 @@ const List = ({
       confirm({
         title: 'Are you sure delete this record?',
         onOk () {
-          onDeleteItem(record._id)
+          onDeleteItem(record.id) // mongodb 是_id, mysql为id
         },
       })
     }
@@ -54,7 +54,7 @@ const List = ({
       title: 'Gender',
       dataIndex: 'Gender',
       key: 'Gender',
-      render: (text, record) => <span>{text?'男':'女'}</span>,
+      render: (text, record) => <span>{text ? '男' : '女'}</span>,
     }, {
       title: 'Phone',
       dataIndex: 'Phone',
@@ -73,7 +73,7 @@ const List = ({
       key: 'creat_time',
       render: (text, record) => {
         return <span>{new Date(text).format('yyyy-MM-dd')}</span>
-      }
+      },
     }, {
       title: 'Operation',
       key: 'operation',
@@ -91,7 +91,7 @@ const List = ({
   const CommonBody = (props) => {
     return <tbody {...props} />
   }
-
+  // record.id连接mysql的时候   record._id 连接mongodb
   return (
     <Table
       {...tableProps}
@@ -100,7 +100,7 @@ const List = ({
       scroll={{ x: 1250 }}
       columns={columns}
       simple
-      rowKey={record => record._id}
+      rowKey={record => record.id}
       components={{
         body: { wrapper: isMotion ? AnimateBody : CommonBody },
       }}

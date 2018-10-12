@@ -7,7 +7,7 @@ import * as usersService from 'services/users'
 import { pageModel } from './common'
 
 const {
- query, insert , update, remove 
+ query, insert , update, remove
 } = usersService
 const { prefix } = config
 
@@ -47,7 +47,7 @@ export default modelExtend(pageModel, {
             list: data.data,
             pagination: {
               current: Number(payload.page) || 1,
-              pageSize: Number(payload.pageSize) || 10,
+              pageSize: Number(payload.pageSize) || 1,
               total: data.total,
             },
           },
